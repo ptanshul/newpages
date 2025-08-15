@@ -4,16 +4,14 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+  - main
 
-pool:
-  vmImage: ubuntu-latest
+pool: 
+  name: windowsself
+  # Assuming your self-hosted agent pool is named "Default"
+  demands:
+    - agent.name -equals DESKTOP-30I17DI  # Forces job to run on your machine
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - script: echo "Running on my Windows laptop!"
+    displayName: 'Test Agent'
